@@ -1,0 +1,280 @@
+:root {
+    --blanco: #ffffff;
+    --negro : #212121;
+    --primario: #FFC107;
+    --secundario: #0097a7;
+    --gris: #757575;
+    --grisClaro: #dfe9f3;
+}
+/*GLobales*/
+
+html {
+    font-size: 62.5%;
+    /*código para poder definir padding de manera correcta*/
+    /*Box Model*/
+    box-sizing: border-box;
+    /* efecto de scroll */
+    scroll-snap-type: y mandatory;
+}
+/*scroll snap seccion en seccion*/
+.servicios,
+.navegacion-principal,
+.formulario {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+/*código para poder definir padding de manera correcta*/
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-size: 16px; /* 1 rem = 10px */
+    font-family: 'Krub', sans-serif;
+    background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100%);
+}
+.contenedor {
+    max-width: 120rem;
+    /*según la posición de la manecilla de reloj se pueden deducir los margenes
+    comenzando con hacia arriba, si los valores se repiten se pueden sobreescribir*/
+    margin: 0 auto;
+
+}
+/*Tipografia*/
+h1 {
+    font-size: 3.8rem; 
+}
+h2 {
+    font-size: 2.8rem;
+}
+h3 {
+    font-size: 1.8rem;
+}
+h1,h2,h3 {
+    text-align: center;
+}
+/* Titulos*/
+.titulo span {
+    font-size: 2rem;
+}
+/**BOTON**/
+.boton {
+    /*color de fondo*/
+    background-color: var(--secundario);
+    /*color del texto*/
+    color: var(--blanco);
+    /*padding (se traduce para el ancho y largo del boton)*/
+    padding: 1rem 3rem;
+    /*separación del elemento de arriba*/
+    margin-top: 1rem;
+    /*tamaño fuente de texto*/
+    font-size: 2rem;
+    /* le quita al texto el diseño que tenga*/
+    text-decoration: none;
+    /*muestra el texto en MAYÚSCULAS*/
+    text-transform: uppercase;
+    /*negrita*/
+    font-weight: bold;
+    /*esquinas redondas de botón*/
+    border-radius: 0.5rem;
+    /**/
+    width: 90%;
+    text-align: center;
+    border: none;
+}
+/*Media Querie para agrandar el boton
+a toda la pantalla cuando esta sea 480px*/
+@media (min-width: 480px) { 
+    .boton {
+        width:auto;
+    }
+} 
+/*regresa la mano en los botones después que desaparece al dar estilo con css*/
+.boton:hover {
+    cursor: pointer;
+}
+/*SOMBRA*/
+.sombra {
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.85);
+    -moz-box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.85);
+    box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.85);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+/* UTILIDADES */
+.w-sm-100 {
+    width: auto;
+}
+@media (min-width: 768px) { 
+    .w-sm-100 {
+        width: auto;
+    }
+}
+.alinear-derecha {
+    justify-content: flex-end;
+}
+.flex {
+    display: flex;
+}
+/*Navegación principal*/
+.nav-bg {
+    background-color: var(--secundario);
+}
+.navegacion-principal {        
+    display: flex;      
+    flex-direction: column;
+    
+    
+}
+/*480px --> telefono
+  768px --> tablet
+  1140px 1400px --> notebook*/
+@media (min-width: 768px) { 
+    .navegacion-principal {
+        flex-direction: row;
+        justify-content: space-between;
+        
+    }
+}
+.navegacion-principal a{   
+    padding: 1rem;    
+    text-align: center;
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 1rem;
+    display: block;
+}
+.navegacion-principal a:hover{       
+    background-color: var(--primario);
+    color: var(--negro);
+}
+/*HERO*/
+.hero {
+    background-image: url(../img/hero.jpg);
+    background-repeat: no-repeat;
+    height: 410px;    
+    position: relative;
+    margin-bottom: 2rem;
+
+}
+.contenido-hero {
+    position: absolute;
+    /*una forma para crear transparencia*/
+    background-color: rgba(0,0,0, 0.7);
+    /*otra forma para crear transparencia*/
+    background-color: rgb(0 0 0 / 70%);
+    width: 100%;
+    height: 100%;
+    /*hace que los elementos que se contienen 
+    se muetren uno al lado de otro*/
+    display: flex;
+    /*con esta propiedad los elementos se 
+    ordenan de arriba hacia abajo*/
+    flex-direction: column;
+    /*se centra el contenido*/
+    align-items: center;
+    /*se utiliza cuando se usa el flex-direction: column;
+    para ordenar el elemento de manera vertical*/
+    justify-content: center;
+}
+.contenido-hero h2,
+.contenido-hero p {
+    color: var(--blanco);
+}
+.ubicacion-heri {
+    display: flex;
+    align-items: flex-end;
+}
+/** SERVICIOS **/
+/* scroll snap*/
+@media (min-width: 768px) { 
+    .servicios {
+        /* sirve para utilizar 2 dimensiones, filas y columnas,
+        se parece a una tabla en html*/
+        display: grid;
+        /*3 columnas
+        grid-template-columns: 33.3% 33.3% 33.3%;
+        /*otra manera de hacer
+        grid-template-columns: 1fr 1fr 1fr;
+        otra manera de hacer*/
+        grid-template-columns: repeat(3,1fr);
+        /*columnas del grid--
+        grid-template-columns: 300px 300px ;
+        filas del grid
+        grid-template-rows: 200px 800px;
+        filas y columnas (igual a las propiedades de arriba)
+        grid: 200px 800px / 300px 300px*/
+        /*separación entre columnas*/
+        column-gap: 10px;
+    }
+    
+}
+
+.servicio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.servicio h3 {
+    color: var(--secundario);
+    font-weight: normal;
+}
+.servicio p {
+    /*separación de linea*/
+    line-height: 2;
+}
+.servicio .iconos {
+    height: 15rem; /* = 150px*/
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%;
+    display: flex;
+    justify-content: space-evenly; /*alinear horizontal*/
+    align-items: center;/*alinear vertical*/
+}
+/* FORMULARIO */
+.formulario {
+    background-color: var(--gris);
+    /*lo que hace min() es utilizar le valor mas pequeño*/
+    /*toma el valor que le demos del total del contenido 
+    o sea, abarcaria 600px del 100% del formulario*/
+    width: min(60rem, 100%);
+    /*se utilizaría así y no justify-content 
+    siempre y cuando el padre no sea un display:flex
+    en este caso la clase padr es .contenedor{}*/
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+.formulario fieldset {
+    border: none;
+}
+.formulario legend {
+    color: var(--primario);
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+.contenedor-campos {
+
+}
+.campo {
+    margin-bottom: 1rem;
+}
+.campo label {
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+.input-text {
+   width: 100%;
+   border: none;
+   padding: 1.5rem;
+   border-radius: 0.5rem;
+}
